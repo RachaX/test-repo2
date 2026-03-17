@@ -18,14 +18,6 @@ class ReportView(APIView):
         # extract body data
         data = request.data
 
-        print('Host: ', settings.EMAIL_HOST)
-        print('PORT: ', settings.EMAIL_PORT)
-        print('TLS: ', settings.EMAIL_USE_TLS)
-        print('SSL: ', settings.EMAIL_USE_SSL)
-        print('RECIPIENT: ', settings.EMAIL_RECIPIENT)
-        print('HOST USER: ', settings.EMAIL_HOST_USER)
-        print('HOST USER PASSWORD: ', settings.EMAIL_HOST_PASSWORD)
-
         serializer = ReportSerializer(data=data)
         if not serializer.is_valid():
             return Response({ 'error' : serializer.errors }, status=status.HTTP_400_BAD_REQUEST)
